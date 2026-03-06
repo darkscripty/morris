@@ -188,6 +188,8 @@ $ cargo morris
 - Auto-applies improvements
 - Best for: Interactive development, learning
 
+The biggest difference is that mutants is a lot more mature, and probably more useful in production code bases for now.
+
 ---
 
 ## 🔧 Configuration
