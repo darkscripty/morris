@@ -80,6 +80,9 @@ struct Config {
     /// Enable debug logging
     #[arg(short, long)]
     verbose: bool,
+    /// Source files or directories to test (default: all of src/)
+    #[arg()]
+    paths: Vec<PathBuf>,
 }
 
 impl Config {
@@ -116,6 +119,25 @@ fn collect_rs_files(dir: &Path, out: &mut Vec<PathBuf>) {
             out.push(path);
         }
     }
+}
+
+/// Resolve user-provided paths into a sorted list of `.rs` files.
+fn filter_source_files(cwd: &Path, paths: &[PathBuf]) -> Result<Vec<PathBuf>, Box<dyn std::error::Error>> {
+    let mut files = Vec::new();
+    for p in paths {
+        let abs = if p.is_absolute() { p.clone() } else { cwd.join(p) };
+        let abs = abs.canonicalize().map_err(|e| format!("{}: {e}", p.display()))?;
+        if abs.is_dir() {
+            collect_rs_files(&abs, &mut files);
+        } else if abs.extension().and_then(|s| s.to_str()) == Some("rs") {
+            files.push(abs);
+        } else {
+            return Err(format!("{}: not a .rs file or directory", p.display()).into());
+        }
+    }
+    files.sort();
+    files.dedup();
+    Ok(files)
 }
 
 /// Run `cargo test --quiet` and return (success, duration, output).
@@ -518,9 +540,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Step 1: Discover source files
     eprintln!("📁 Discovering source files...");
-    let source_files = list_source_files(&cwd);
+    let source_files = if config.paths.is_empty() {
+        list_source_files(&cwd)
+    } else {
+        filter_source_files(&cwd, &config.paths)?
+    };
     if source_files.is_empty() {
-        eprintln!("❌ No Rust source files found in src/");
+        eprintln!("❌ No Rust source files found");
         return Ok(());
     }
     for f in &source_files {
